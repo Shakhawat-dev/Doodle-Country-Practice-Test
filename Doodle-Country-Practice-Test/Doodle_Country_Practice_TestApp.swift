@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct Doodle_Country_Practice_TestApp: App {
+    @StateObject var vm = CountriesViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                CounrtryFormView()
+                    .environmentObject(vm)
+            }
         }
     }
 }
