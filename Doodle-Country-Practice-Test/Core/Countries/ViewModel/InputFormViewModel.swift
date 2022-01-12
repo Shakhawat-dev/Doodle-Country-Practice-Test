@@ -23,7 +23,7 @@ class InputFormViewModel: ObservableObject {
     @Published var showSuccessAlert: Bool = false
     @Published var isPostcodeRequired: Bool = false
     
-    var userInfoData: [CountryUserInfoModel] = []
+    @Published var userInfoData: [CountryUserInfoModel] = []
     
     var country: Country?
     
@@ -55,30 +55,57 @@ class InputFormViewModel: ObservableObject {
     
     func saveData() {
         
-        guard let index = self.userInfoData.firstIndex(where: { $0.id == country?.countryID ?? "" }) else { return }
-        self.userInfoData.remove(at: index)
-        
-        if country?.countryPostcodeRequired ?? "1" == "0" {
-            self.userInfoData.append(CountryUserInfoModel(
-                id: country?.countryID ?? "",
-                firstName: firstName,
-                lastName: lastName,
-                company: company,
-                address_1: address1,
-                address_2: address2,
-                city: city,
-                zone: zone,
-                postcode: postCode,
-                country: countryName,
-                state: state
-            ))
+        if let index = self.userInfoData.firstIndex(where: { $0.id == country?.countryID ?? "" })  {
+            self.userInfoData.remove(at: index)
+            
+            if country?.countryPostcodeRequired ?? "0" == "1" {
+                if postCode != "" {
+                    saveInfo()
+                    self.showSuccessAlert = true
+                } else {
+                    self.isPostcodeRequired = true
+                }
+                
+            } else {
+                saveInfo()
+                self.showSuccessAlert = true
+            }
+            
         } else {
-            self.isPostcodeRequired = true
+            if country?.countryPostcodeRequired ?? "0" == "1" {
+                if postCode != "" {
+                    saveInfo()
+                    self.showSuccessAlert = true
+                } else {
+                    self.isPostcodeRequired = true
+                }
+                
+            } else {
+                saveInfo()
+                self.showSuccessAlert = true
+            }
         }
         
-        
-        
         UserLocalStorage.saveData(dataArray: userInfoData)
-        self.showSuccessAlert = true
+        
+        self.getData()
+    }
+    
+    func saveInfo() {
+
+        self.userInfoData.append(CountryUserInfoModel(
+            id: country?.countryID ?? "",
+            firstName: firstName,
+            lastName: lastName,
+            company: company,
+            address_1: address1,
+            address_2: address2,
+            city: city,
+            zone: zone,
+            postcode: postCode,
+            country: countryName,
+            state: state
+        ))
+
     }
 }

@@ -50,7 +50,7 @@ struct InputFormView: View {
                     }
                     
                     if countryAddressFormat.contains("postcode") {
-                        TitledTextField(title: "Post Code", placeHolder: "Post Code", text: $vm.postCode)
+                        TitledTextField(title: "Post Code", placeHolder: "Post Code", text: $vm.postCode, isRequired: vm.isPostcodeRequired)
                     }
                     
                     if countryAddressFormat.contains("country") {
