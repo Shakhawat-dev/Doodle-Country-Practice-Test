@@ -15,3 +15,10 @@ Data will be automatically fetched when when reopen the App later.
 <img src="Doodle-Country-Practice-Test/Images/country_list.png" width="256"> <img src="Doodle-Country-Practice-Test/Images/input_form.png" width="256"> <img src="Doodle-Country-Practice-Test/Images/save_succesfull.png" width="256">
 
 
+## Deployment
+
+To clone this project use this link. 
+
+```bash
+  https://github.com/Shakhawat-dev/Doodle-Country-Practice-Test.git
+```
