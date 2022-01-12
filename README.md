@@ -12,7 +12,6 @@ Data will be automatically fetched when when reopen the App later.
 
 ## Screenshots
 
-![App Screenshot](Doodle-Country-Practice-Test/Images/country_list.png)
-![App Screenshot](Doodle-Country-Practice-Test/Images/input_form.png)
-![App Screenshot](Doodle-Country-Practice-Test/Images/save_succesfull.png)
+<img src="Doodle-Country-Practice-Test/Images/country_list.png" width="256"> <img src="Doodle-Country-Practice-Test/Images/input_form.png" width="256"> <img src="Doodle-Country-Practice-Test/Images/save_succesfull.png" width="256">
+
 
